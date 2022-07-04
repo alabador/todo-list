@@ -1,6 +1,6 @@
 
 
-class Todo {
+class Task {
     constructor(title, description, dueDate, priority, notes, subtasks, tags){
         this.title = title,
         this.description = description,
@@ -10,6 +10,4 @@ class Todo {
         this.subtasks = subtasks,
         this.tags = tags
     }
-    edit();
-    delete();
 }
