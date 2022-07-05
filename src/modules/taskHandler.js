@@ -16,6 +16,4 @@ function addTaskToList(task) {
     /* Appends task to array*/
     /* task argument is a dom element filled with object info 
         that is created from another function*/
-    const taskList = document.querySelector('.task-list');
-    taskList.append(task);
 };
