@@ -17,6 +17,15 @@ body {
 header {
     background-color: blue;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button.add-task {
+    padding: 8px 16px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 main {
@@ -43,3 +52,6 @@ nav {
     }
 }
 
+.fa {
+    font-size: 2em;
+}
