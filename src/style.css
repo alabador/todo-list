@@ -21,7 +21,7 @@ header {
     justify-content: space-between;
 }
 
-button.add-task {
+button.create-task {
     padding: 8px 16px;
     border: none;
     background-color: white;
