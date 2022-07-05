@@ -4,6 +4,11 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
     display: grid;
     margin: 0;
     padding: 0;
@@ -21,13 +26,6 @@ header {
     justify-content: space-between;
 }
 
-button.create-task {
-    padding: 8px 16px;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-}
-
 main {
     height: 100%;
     display: grid;
@@ -40,7 +38,7 @@ nav {
 }
 
 .task-window {
-    background-color: green;
+    background-color: white;
 }
 
 @media only screen and (max-width: 850px){
@@ -52,6 +50,27 @@ nav {
     }
 }
 
-.fa {
-    font-size: 2em;
+.add {
+    width: 70px;
+   height: 70px;
+   background-color: rgb(226, 153, 17);
+   border: none;
+   border-radius: 50%;
+   box-shadow: 0 2px 8px 2px rgba(211, 157, 42, 0.425);
+   transition: all 0.1s ease-in-out;
+   cursor: pointer;
+ 
+   font-size: 50px;
+   color: white;
+   text-align: center;
+   line-height: 70px;
+ 
+   position: fixed;
+   right: 50px;
+   bottom: 50px;
 }
+
+.add:hover {
+    box-shadow: 0 6px 14px 0 rgba(211, 157, 42, 0.425);
+    transform: scale(1.05);
+ }

@@ -1,7 +1,7 @@
 import { createTask } from "./taskActions";
 
 function initCreateTaskEvent() {
-    const createButton = document.querySelector('.create-task');
+    const createButton = document.querySelector('.add');
     createButton.addEventListener('click', createTask);
 };
 
