@@ -89,8 +89,8 @@ export function initForm() {
     descriptionDiv.append(descriptionLabel, description);
     titleDiv.append(titleLabel, titleInput);
     buttonDiv.append(taskButton);
-    form.append(headerDiv, titleDiv, descriptionDiv, dateDiv, priorityDiv, buttonDiv);
-    formDiv.append(closeDiv, form);
+    form.append(closeDiv, headerDiv, titleDiv, descriptionDiv, dateDiv, priorityDiv, buttonDiv);
+    formDiv.append(form);
 
     return formDiv;
 }
