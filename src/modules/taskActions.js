@@ -1,9 +1,11 @@
 import { Task } from "./task";
+import { openForm } from "./dom";
 
 const tasks = [];
 
 function createTask() {
     console.log('the logic works');
+    openForm();
 };
 
 
