@@ -1,11 +1,12 @@
 import { Task } from "./task";
 import { openForm } from "./dom";
+import { cancelTaskCreate } from "./events";
 
 const tasks = [];
 
 function createTask() {
-    console.log('the logic works');
     openForm();
+    cancelTaskCreate();
 };
 
 
