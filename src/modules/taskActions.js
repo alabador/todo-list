@@ -1,25 +1,27 @@
 import { Task } from "./task";
 import { openForm } from "./dom";
-import { cancelTaskCreate } from "./events";
+import { cancelTaskCreateEvent, getValues, saveValuesEvent } from "./events";
 
 const tasks = [];
 
-function createTask() {
+export function createTask() {
     openForm();
-    cancelTaskCreate();
+    cancelTaskCreateEvent();
+    saveValuesEvent();
 };
 
+export function newTask() {
+    const propertiesArray = getValues();
+    const task = new Task(...propertiesArray);
+    return task;
+};
 
+// function getTaskTitle(array) {
+//     const title = array[0];
+//     return title;
+// }
 
 function editTaskProperties() {
     /*Task formation - fill out fields to get task properties*/
     
 };
-
-function addTaskToList(task) {
-    /* Appends task to array*/
-    /* task argument is a dom element filled with object info 
-        that is created from another function*/
-};
-
-export {createTask};
