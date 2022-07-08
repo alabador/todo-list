@@ -1,5 +1,6 @@
 import { createTask, newTask } from "./taskActions";
 import { addTaskToDom, cancelForm } from "./dom";
+import { createTaskInDom } from "./createElements";
 
 function initCreateTaskEvent() {
     const createButton = document.querySelector('.add');
@@ -12,19 +13,11 @@ function cancelTaskCreateEvent() {
 };
 
 function saveValuesEvent() {
-    const formButton = document.querySelector('.form-button');
-    formButton.addEventListener('click', addTaskToDom);
+    const form = document.querySelector('.form');
+    form.addEventListener('submit', function(e) {
+        addTaskToDom();
+        e.preventDefault();
+    });
 };
 
-function getValues() {
-    const valueArray = [];
-    const inputs = document.querySelectorAll('.form-input');
-    for (let i=0; i<inputs.length; i++) {
-        const currentInputValue = inputs[i].value;
-        valueArray.push(currentInputValue);
-    }
-    console.log(valueArray);
-    return valueArray;
-};
-
-export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent, getValues};
+export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent};

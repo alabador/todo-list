@@ -1,3 +1,5 @@
+import { newTask } from "./taskActions";
+
 export function initForm() {
     const formDiv = document.createElement('div');
     formDiv.classList.add('form-div');
@@ -93,4 +95,36 @@ export function initForm() {
     formDiv.append(form);
 
     return formDiv;
+}
+
+export function createTaskInDom(task) {
+    
+    const taskContainer = document.createElement('li');
+    taskContainer.classList.add('task');
+    // taskContainer.setAttribute('id',`${task.title}`);
+
+    const checkboxDiv = document.createElement('div');
+    checkboxDiv.classList.add('task-checkbox-div');
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.classList.add('task-checkbox');
+
+    const titleDiv = document.createElement('div');
+    titleDiv.classList.add('task-title-div');
+    const title = document.createElement('p');
+    title.classList.add('task-title');
+    title.textContent = task.title;
+    
+    const dateDiv = document.createElement('div');
+    dateDiv.classList.add('task-date-div');
+    const date = document.createElement('p');
+    date.classList.add('task-date');
+    date.textContent = task.dueDate;
+
+    checkboxDiv.append(checkbox);
+    titleDiv.append(title);
+    dateDiv.append(date);
+    taskContainer.append(checkbox,titleDiv,dateDiv);
+    
+    return taskContainer;
 }

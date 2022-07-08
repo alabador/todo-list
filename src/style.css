@@ -173,3 +173,7 @@ main {
     border-radius: 4px;
  }
 
+ .task {
+   display: flex;
+   width: 100%;
+ }
