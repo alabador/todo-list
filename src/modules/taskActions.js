@@ -2,6 +2,8 @@ import { Task } from "./task";
 import { openForm } from "./dom";
 import { cancelTaskCreateEvent, saveValuesEvent } from "./events";
 
+export let tasks = [];
+
 export function createTask() {
     openForm();
     cancelTaskCreateEvent();
@@ -11,7 +13,6 @@ export function createTask() {
 export function newTask() {
     const propertiesArray = getValues();
     const task = new Task(...propertiesArray);
-    console.log(task);
     return task;
 };
 

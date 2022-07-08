@@ -14,11 +14,10 @@ export function cancelForm() {
 }
 
 export function addTaskToDom() {
-    //get object from tasks and append
-    //have another funciton to show tasks
-
     const taskList = document.querySelector('.task-list');
-    const currentTask = createTaskInDom(newTask);
+    const task = newTask();
+    const currentTask = createTaskInDom(task);
+    tasks.push(task);
     taskList.append(currentTask);
-    // console.log(taskList.childNodes);
+    cancelForm();
 };
