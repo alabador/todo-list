@@ -186,6 +186,8 @@ main {
    margin: 0;
  }
 
+ /*Task Styles*/
+
  .task {
    display: flex;
    width: 100%;
@@ -193,11 +195,13 @@ main {
    justify-content: space-between;
    border-bottom: 2px solid gray;
    height: 60px;
+   padding-right: 24px;
  }
 
  .task .task-checkbox {
    flex-grow: 0;
-   flex-basis: 72px;
+   flex-basis: 60px;
+   transform: scale(1.5);
  }
 
  .task .task-title-div {
@@ -208,11 +212,26 @@ main {
 
  .task .task-date-div {
    flex-grow: 0;
-   flex-basis: 150px;
+   flex-basis: 120px;
    display: flex;
    justify-content: flex-start;
  }
 
+ .task-actions-div{
+   display: flex;
+   gap: 12px;
+   flex-basis: 60px;
+ }
+
+ .task button {
+   background: none;
+   cursor: pointer;
+   border: none;
+   padding: 2px 4px;
+   transform: scale(1.5);
+ }
+
+ /*Task Priority styles*/
  .task-prio-div {
    flex-basis: 10px;
    flex-grow: 0;
@@ -227,4 +246,13 @@ main {
  }
  .high {
    background-color: var(--high);
+ }
+
+
+ /*Task description styles*/
+ .task-description-div {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
  }

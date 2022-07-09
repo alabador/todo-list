@@ -127,10 +127,26 @@ export function createTaskInDom(task) {
     const priorityClass = getPriority(priority);
     prioDiv.classList.add(priorityClass);
 
+    const taskActions = document.createElement('div');
+    taskActions.classList.add('task-actions-div'); 
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('task-delete-button');
+    const deleteIcon = document.createElement('i');
+    deleteIcon.classList.add('fa', 'fa-trash');
+    deleteButton.append(deleteIcon);
+    
+    const editButton = document.createElement('button');
+    editButton.classList.add('task-edit-button');
+    const editIcon = document.createElement('i');
+    editIcon.classList.add('fa', 'fa-edit');
+    editButton.append(editIcon);
+
+    taskActions.append(editButton, deleteButton)
     checkboxDiv.append(checkbox);
     titleDiv.append(title);
     dateDiv.append(date);
-    taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv);
+    taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
     
     return taskContainer;
 }
