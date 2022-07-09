@@ -18,6 +18,7 @@ export function addTaskToDom() {
     const task = newTask();
     const currentTask = createTaskInDom(task);
     tasks.push(task);
+    console.log(tasks);
     taskList.append(currentTask);
     cancelForm();
 };

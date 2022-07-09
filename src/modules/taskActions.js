@@ -26,11 +26,20 @@ function getValues() {
     return valueArray;
 };
 
-// export function addTaskToList() {
-//     const task = newTask();
-//     tasks.push(task);
-// }
-
+export function getPriority(priority) {
+    if (priority == 'low') {
+        return 'low';
+    }
+    else if (priority == 'mid'){
+        return 'mid';
+    }
+    else if (priority == 'high') {
+        return 'high';
+    }
+    else {
+        return;
+    }
+}
 // function getTaskTitle(array) {
 //     const title = array[0];
 //     return title;

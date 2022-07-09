@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300;1,400;1,500;1,700&display=swap');
 :root {
+    --header: rgb(166, 252, 230);
     --cta-color: rgb(226, 153, 17);
+    --low: rgb(81, 212, 81);
+    --mid: rgb(241, 238, 58);
+    --high: rgb(233, 75, 36);
 }
 
 
@@ -26,7 +30,7 @@ body {
 }
 
 .header {
-    background-color: rgb(166, 252, 230);
+    background-color: var(--header);
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -207,4 +211,20 @@ main {
    flex-basis: 150px;
    display: flex;
    justify-content: flex-start;
+ }
+
+ .task-prio-div {
+   flex-basis: 10px;
+   flex-grow: 0;
+   height: 100%;
+ }
+
+ .low {
+   background-color: var(--low);
+ }
+ .mid {
+   background-color: var(--mid);
+ }
+ .high {
+   background-color: var(--high);
  }

@@ -1,4 +1,4 @@
-import { newTask } from "./taskActions";
+import { newTask, getPriority } from "./taskActions";
 
 export function initForm() {
     const formDiv = document.createElement('div');
@@ -121,10 +121,16 @@ export function createTaskInDom(task) {
     date.classList.add('task-date');
     date.textContent = task.dueDate;
 
+    const prioDiv = document.createElement('div');
+    prioDiv.classList.add('task-prio-div');
+    const priority = task.priority;
+    const priorityClass = getPriority(priority);
+    prioDiv.classList.add(priorityClass);
+
     checkboxDiv.append(checkbox);
     titleDiv.append(title);
     dateDiv.append(date);
-    taskContainer.append(checkbox,titleDiv,dateDiv);
+    taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv);
     
     return taskContainer;
 }
