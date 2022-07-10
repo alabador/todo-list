@@ -1,5 +1,8 @@
 import { newTask, getPriority } from "./taskActions";
 
+/*This file is so long, please let me know a way to make dom
+elements in js in a cleaner way*/
+
 export function initForm() {
     const formDiv = document.createElement('div');
     formDiv.classList.add('form-div');
@@ -98,11 +101,25 @@ export function initForm() {
 }
 
 export function createTaskInDom(task) {
+    const wrapper = document.createElement('div');
     
     const taskContainer = document.createElement('li');
     taskContainer.classList.add('task');
-    // taskContainer.setAttribute('id',`${task.title}`);
 
+    const taskViewDiv = document.createElement('div');
+    taskViewDiv.classList.add('task-view-div');
+
+    /*Task details*/
+    const taskDetailsDiv = document.createElement('div');
+    taskDetailsDiv.classList.add('task-details-div');
+    const taskDetails = document.createElement('p');
+    taskDetails.classList.add('task-details', 'details-child');
+    const taskProject = document.createElement('p');
+    taskProject.classList.add('task-details', 'details-child');
+    taskProject.textContent = `Project: ${task.project}`
+    taskDetails.textContent = `Description: ${task.description}`;
+
+    /*Create all elements inside task display*/
     const checkboxDiv = document.createElement('div');
     checkboxDiv.classList.add('task-checkbox-div');
     const checkbox = document.createElement('input');
@@ -122,10 +139,9 @@ export function createTaskInDom(task) {
     date.textContent = task.dueDate;
 
     const prioDiv = document.createElement('div');
-    prioDiv.classList.add('task-prio-div');
     const priority = task.priority;
     const priorityClass = getPriority(priority);
-    prioDiv.classList.add(priorityClass);
+    prioDiv.classList.add(priorityClass, 'task-prio-div');
 
     const taskActions = document.createElement('div');
     taskActions.classList.add('task-actions-div'); 
@@ -146,7 +162,10 @@ export function createTaskInDom(task) {
     checkboxDiv.append(checkbox);
     titleDiv.append(title);
     dateDiv.append(date);
-    taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
+    // taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
+    taskViewDiv.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
+    taskDetailsDiv.append(taskDetails);
+    taskContainer.append(taskViewDiv, taskDetailsDiv);
     
     return taskContainer;
 }

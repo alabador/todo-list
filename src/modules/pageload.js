@@ -1,4 +1,4 @@
-import { initCreateTaskEvent } from "./events";
+import { initCreateTaskEvent, } from "./events";
 
 export function initialPageLoad() {
     initCreateTaskEvent();

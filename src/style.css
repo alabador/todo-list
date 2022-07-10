@@ -5,6 +5,8 @@
     --low: rgb(81, 212, 81);
     --mid: rgb(241, 238, 58);
     --high: rgb(233, 75, 36);
+
+    --task-details: rgb(236, 236, 236);
 }
 
 
@@ -189,28 +191,56 @@ main {
  /*Task Styles*/
 
  .task {
-   display: flex;
    width: 100%;
-   align-items: center;
-   justify-content: space-between;
    border-bottom: 2px solid gray;
-   height: 60px;
-   padding-right: 24px;
+   min-height: 60px;
+   position: relative;
+   cursor: pointer;
  }
 
- .task .task-checkbox {
+ /*Accordion details*/
+ .task-details-div {
+   position: relative;
+   height: 0;
+   text-align: justify;
+   width: 100%;
+   overflow: hidden;
+   transition: 0.3s;
+   background-color: var(--task-details);
+ }
+
+ .active .task-details-div{
+   height: 100px;
+   position: relative;
+   left: 0;
+   right: 0;
+ }
+
+ .details-child {
+    padding: 0 36px;
+ }
+
+ .task-view-div {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 100%;
+ }
+
+ /*Task components*/
+ .task-view-div .task-checkbox {
    flex-grow: 0;
    flex-basis: 60px;
    transform: scale(1.5);
  }
 
- .task .task-title-div {
+ .task-view-div .task-title-div {
    flex-grow: 5;
    display: flex;
    justify-content: flex-start;
  }
 
- .task .task-date-div {
+ .task-view-div .task-date-div {
    flex-grow: 0;
    flex-basis: 120px;
    display: flex;
@@ -220,10 +250,12 @@ main {
  .task-actions-div{
    display: flex;
    gap: 12px;
-   flex-basis: 60px;
+   flex-basis: 72px;
+   justify-content: flex-start;
+   align-items: center;
  }
 
- .task button {
+ .task-view-div button {
    background: none;
    cursor: pointer;
    border: none;
@@ -232,10 +264,10 @@ main {
  }
 
  /*Task Priority styles*/
- .task-prio-div {
+ .task-view-div .task-prio-div {
    flex-basis: 10px;
    flex-grow: 0;
-   height: 100%;
+   min-height: 60px;
  }
 
  .low {

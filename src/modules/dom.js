@@ -1,5 +1,5 @@
 import { createTaskInDom, initForm } from "./createElements";
-import { newTask, tasks, addTaskToList } from "./taskActions";
+import { newTask, tasks,} from "./taskActions";
 
 export function openForm() {
     const body = document.querySelector('body');
@@ -20,5 +20,8 @@ export function addTaskToDom() {
     tasks.push(task);
     console.log(tasks);
     taskList.append(currentTask);
+    currentTask.addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
     cancelForm();
 };
