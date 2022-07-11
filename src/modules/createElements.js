@@ -125,6 +125,13 @@ export function createTaskInDom(task) {
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.classList.add('task-checkbox');
+    checkbox.addEventListener('click', function(e){
+        if (e.target == this){
+            console.log('stopped');
+            e.stopPropagation();
+            return;
+        }
+    })
 
     const titleDiv = document.createElement('div');
     titleDiv.classList.add('task-title-div');
@@ -151,6 +158,13 @@ export function createTaskInDom(task) {
     const deleteIcon = document.createElement('i');
     deleteIcon.classList.add('fa', 'fa-trash');
     deleteButton.append(deleteIcon);
+    deleteButton.addEventListener('click', function(e){
+        if (e.target !== this){
+            console.log('stopped');
+            e.stopPropagation();
+            return;
+        }
+    })
     
     const editButton = document.createElement('button');
     editButton.classList.add('task-edit-button');

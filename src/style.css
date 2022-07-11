@@ -206,9 +206,9 @@ main {
    text-align: justify;
    width: 100%;
    overflow: hidden;
-   transition: 0.3s;
+   transition: 0.2s ease-out;
    background-color: var(--task-details);
-   border-top: 1px solid gray;
+   font-size: 12px;
  }
 
  .active .task-details-div{
