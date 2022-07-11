@@ -157,6 +157,13 @@ export function createTaskInDom(task) {
     const editIcon = document.createElement('i');
     editIcon.classList.add('fa', 'fa-edit');
     editButton.append(editIcon);
+    editButton.addEventListener('click', function(e){
+        if (e.target !== this){
+            console.log('stopped');
+            e.stopPropagation();
+            return;
+        }
+    })
 
     taskActions.append(editButton, deleteButton)
     checkboxDiv.append(checkbox);
@@ -166,6 +173,9 @@ export function createTaskInDom(task) {
     taskViewDiv.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
     taskDetailsDiv.append(taskDetails);
     taskContainer.append(taskViewDiv, taskDetailsDiv);
+    taskContainer.addEventListener('click', function(e) {
+        this.classList.toggle('active');
+    });
     
     return taskContainer;
 }

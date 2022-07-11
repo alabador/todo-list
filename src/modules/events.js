@@ -18,7 +18,7 @@ function saveValuesEvent() {
     form.addEventListener('submit', function(e) {
         addTaskToDom();
         e.preventDefault();
-        displayTaskList();
+        // displayTaskList();
     });
 };
 

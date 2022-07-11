@@ -20,8 +20,8 @@ export function addTaskToDom() {
     tasks.push(task);
     console.log(tasks);
     taskList.append(currentTask);
-    currentTask.addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
+    // currentTask.addEventListener('click', function() {
+    //     this.classList.toggle('active');
+    // });
     cancelForm();
 };
