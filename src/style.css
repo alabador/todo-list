@@ -208,7 +208,7 @@ main {
    overflow: hidden;
    transition: 0.2s ease-out;
    background-color: var(--task-details);
-   font-size: 12px;
+   font-size: 14px;
  }
 
  .active .task-details-div{

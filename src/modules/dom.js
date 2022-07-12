@@ -18,10 +18,7 @@ export function addTaskToDom() {
     const task = newTask();
     const currentTask = createTaskInDom(task);
     tasks.push(task);
-    console.log(tasks);
     taskList.append(currentTask);
-    // currentTask.addEventListener('click', function() {
-    //     this.classList.toggle('active');
-    // });
+    
     cancelForm();
 };

@@ -1,4 +1,6 @@
-import { newTask, getPriority } from "./taskActions";
+import { editTaskInDom, openForm } from "./dom";
+import { editValuesEvent } from "./events";
+import { newTask, getPriority, editTask } from "./taskActions";
 
 /*This file is so long, please let me know a way to make dom
 elements in js in a cleaner way*/
@@ -105,6 +107,7 @@ export function createTaskInDom(task) {
     
     const taskContainer = document.createElement('li');
     taskContainer.classList.add('task');
+    taskContainer.id = task.title;
 
     const taskViewDiv = document.createElement('div');
     taskViewDiv.classList.add('task-view-div');
@@ -174,6 +177,23 @@ export function createTaskInDom(task) {
     editButton.addEventListener('click', function(e){
         if (e.target !== this){
             console.log('stopped');
+            
+            function edit() {
+                editTask();
+                const form = document.querySelector('#form');
+                
+                form.querySelector('#title').value = task.title;
+                form.querySelector('#description').value = task.description;
+                form.querySelector('#date').value = task.dueDate;
+                form.querySelector('#priority').value = task.priority;
+                
+                // const task = editValuesEvent();
+                return task;
+            }
+            edit();
+            // const editedTask = edit();
+            // console.log(editedTask);
+            // title.textContent = editedTask.title;
             e.stopPropagation();
             return;
         }
@@ -183,13 +203,12 @@ export function createTaskInDom(task) {
     checkboxDiv.append(checkbox);
     titleDiv.append(title);
     dateDiv.append(date);
-    // taskContainer.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
     taskViewDiv.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
     taskDetailsDiv.append(taskDetails);
     taskContainer.append(taskViewDiv, taskDetailsDiv);
     taskContainer.addEventListener('click', function(e) {
         this.classList.toggle('active');
     });
-    
+
     return taskContainer;
 }

@@ -1,7 +1,8 @@
 import { createTask, newTask } from "./taskActions";
-import { addTaskToDom, cancelForm } from "./dom";
+import { addTaskToDom, cancelForm, editTaskInDom } from "./dom";
 import { createTaskInDom } from "./createElements";
-import { displayTaskList } from "./pageload";
+import { getTasks } from "./pageload";
+import { tasks } from "./taskActions";
 
 function initCreateTaskEvent() {
     const createButton = document.querySelector('.add');
@@ -18,8 +19,9 @@ function saveValuesEvent() {
     form.addEventListener('submit', function(e) {
         addTaskToDom();
         e.preventDefault();
-        // displayTaskList();
+        getTasks();
     });
 };
 
-export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent,};
+
+export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent};

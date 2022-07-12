@@ -1,6 +1,7 @@
 import { Task } from "./task";
 import { openForm } from "./dom";
-import { cancelTaskCreateEvent, saveValuesEvent } from "./events";
+import { cancelTaskCreateEvent, saveValuesEvent, editValuesEvent } from "./events";
+import { getTasks } from "./pageload";
 
 export let tasks = [];
 
@@ -8,6 +9,13 @@ export function createTask() {
     openForm();
     cancelTaskCreateEvent();
     saveValuesEvent();
+};
+
+export function editTask() {
+    openForm();
+    cancelTaskCreateEvent();
+    console.log('form opened');
+    // editValuesEvent();
 };
 
 export function newTask() {
@@ -40,10 +48,6 @@ export function getPriority(priority) {
         return;
     }
 }
-// function getTaskTitle(array) {
-//     const title = array[0];
-//     return title;
-// }
 
 function editTaskProperties() {
     /*Task formation - fill out fields to get task properties*/
