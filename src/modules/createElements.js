@@ -1,4 +1,4 @@
-import { editTaskInDom, openForm } from "./dom";
+import { editTaskInDom, openForm, cancelForm} from "./dom";
 import { editValuesEvent } from "./events";
 import { newTask, getPriority, editTask } from "./taskActions";
 
@@ -149,8 +149,8 @@ export function createTaskInDom(task) {
     date.textContent = task.dueDate;
 
     const prioDiv = document.createElement('div');
-    const priority = task.priority;
-    const priorityClass = getPriority(priority);
+    let priority = task.priority;
+    let priorityClass = getPriority(priority);
     prioDiv.classList.add(priorityClass, 'task-prio-div');
 
     const taskActions = document.createElement('div');
@@ -187,13 +187,23 @@ export function createTaskInDom(task) {
                 form.querySelector('#date').value = task.dueDate;
                 form.querySelector('#priority').value = task.priority;
                 
-                // const task = editValuesEvent();
-                return task;
+                form.addEventListener('submit', function(e) {
+                    const editedTask = newTask();
+                    
+                    title.textContent = editedTask.title;
+                    date.textContent = editedTask.dueDate;
+                    priority = editedTask.priority;
+                    priorityClass = getPriority(priority);
+                    prioDiv.classList.add(priorityClass, 'task-prio-div');
+                    taskProject.textContent = `Project: ${editedTask.project}`
+                    taskDetails.textContent = `Description: ${editedTask.description}`;
+                    
+                    e.preventDefault();
+                    cancelForm();
+                })
+                return;
             }
             edit();
-            // const editedTask = edit();
-            // console.log(editedTask);
-            // title.textContent = editedTask.title;
             e.stopPropagation();
             return;
         }
