@@ -1,10 +1,11 @@
 import { editTaskInDom, openForm, cancelForm} from "./dom";
 import { editValuesEvent } from "./events";
-import { newTask, getPriority, editTask } from "./taskActions";
+import { newTask, getPriority, editTask, tasks } from "./taskActions";
 
 /*This file is so long, please let me know a way to make dom
 elements in js in a cleaner way*/
 
+/*Creates form in dom*/
 export function initForm() {
     const formDiv = document.createElement('div');
     formDiv.classList.add('form-div');
@@ -102,9 +103,11 @@ export function initForm() {
     return formDiv;
 }
 
+/*Super long function, i know. 
+This creates the task in the dom, using the values of the new task
+created from the constructor*/
+
 export function createTaskInDom(task) {
-    const wrapper = document.createElement('div');
-    
     const taskContainer = document.createElement('li');
     taskContainer.classList.add('task');
     taskContainer.id = task.title;
@@ -163,7 +166,8 @@ export function createTaskInDom(task) {
     deleteButton.append(deleteIcon);
     deleteButton.addEventListener('click', function(e){
         if (e.target !== this){
-            console.log('stopped');
+            taskContainer.remove();
+            tasks.pop();
             e.stopPropagation();
             return;
         }
@@ -176,7 +180,6 @@ export function createTaskInDom(task) {
     editButton.append(editIcon);
     editButton.addEventListener('click', function(e){
         if (e.target !== this){
-            console.log('stopped');
             
             function edit() {
                 editTask();
