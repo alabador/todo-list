@@ -1,6 +1,7 @@
 import { editTaskInDom, openForm, cancelForm} from "./dom";
 import { editValuesEvent } from "./events";
 import { newTask, getPriority, editTask, tasks } from "./taskActions";
+import { getTasks } from "./pageload";
 
 /*This file is so long, please let me know a way to make dom
 elements in js in a cleaner way*/
@@ -199,10 +200,18 @@ export function createTaskInDom(task) {
                     date.textContent = editedTask.dueDate;
                     priority = editedTask.priority;
                     priorityClass = getPriority(priority);
+                    prioDiv.removeAttribute("class");
                     prioDiv.classList.add(priorityClass, 'task-prio-div');
                     taskProject.textContent = `Project: ${editedTask.project}`
                     taskDetails.textContent = `Description: ${editedTask.description}`;
                     
+                    task.title = editedTask.title;
+                    task.dueDate = editedTask.dueDate;
+                    task.priority = editedTask.priority;
+                    task.project = editedTask.project;
+                    task.description = editedTask.description;
+                    
+                    getTasks();
                     e.preventDefault();
                     cancelForm();
                 })
