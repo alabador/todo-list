@@ -164,6 +164,7 @@ export function createTaskInDom(task) {
     const deleteIcon = document.createElement('i');
     deleteIcon.classList.add('fa', 'fa-trash');
     deleteButton.append(deleteIcon);
+    
     deleteButton.addEventListener('click', function(e){
         if (e.target !== this){
             taskContainer.remove();
@@ -178,6 +179,7 @@ export function createTaskInDom(task) {
     const editIcon = document.createElement('i');
     editIcon.classList.add('fa', 'fa-edit');
     editButton.append(editIcon);
+    
     editButton.addEventListener('click', function(e){
         if (e.target !== this){
             
@@ -219,6 +221,7 @@ export function createTaskInDom(task) {
     taskViewDiv.append(prioDiv,checkbox,titleDiv,dateDiv, taskActions);
     taskDetailsDiv.append(taskDetails);
     taskContainer.append(taskViewDiv, taskDetailsDiv);
+    
     taskContainer.addEventListener('click', function(e) {
         this.classList.toggle('active');
     });

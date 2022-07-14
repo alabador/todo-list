@@ -6,7 +6,7 @@
     --mid: rgb(241, 238, 58);
     --high: rgb(233, 75, 36);
 
-    --task-details: rgb(255, 255, 255);
+    --task-details: rgb(223, 251, 244);
     --hover-color: rgb(140, 212, 230);
 }
 
@@ -207,8 +207,7 @@ main {
    width: 100%;
    overflow: hidden;
    transition: 0.2s ease-out;
-   background-color: var(--task-details);
-   font-size: 14px;
+   font-size: 0px;
  }
 
  .active .task-details-div{
@@ -216,6 +215,9 @@ main {
    position: relative;
    left: 0;
    right: 0;
+   border-top: 1px solid #c9c9c9;
+   background-color: var(--task-details);
+   font-size: 14px;
  }
 
  .details-child {
