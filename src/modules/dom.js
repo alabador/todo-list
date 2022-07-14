@@ -1,9 +1,9 @@
-import { createTaskInDom, initForm } from "./createElements";
+import { createTaskInDom, initForm, form } from "./createElements";
 import { newTask, tasks,} from "./taskActions";
 
 export function openForm() {
     const body = document.querySelector('body');
-    body.append(initForm());
+    body.append(form);
     document.querySelector('.add').disabled = true;
 }
 
