@@ -147,6 +147,10 @@ export function createTaskInDomv2(task) {
         }
     })
 
+    taskLi.addEventListener('click', function(e) {
+        this.classList.toggle('active');
+    });
+
     return taskLi;
 }
 
