@@ -14,6 +14,7 @@ function cancelTaskCreateEvent() {
     cancelButton.addEventListener('click', cancelForm);
 };
 
+//start editing logic from here, in addtasktodom in dom.js
 function saveValuesEvent() {
     const form = document.querySelector('.form');
     form.addEventListener('submit', function(e) {
