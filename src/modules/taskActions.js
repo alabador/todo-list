@@ -49,6 +49,14 @@ export function getPriority(priority) {
     }
 }
 
+export function matchTask() {
+
+}
+
+export function deleteTask() {
+    
+}
+
 function editTaskProperties() {
     /*Task formation - fill out fields to get task properties*/
     
