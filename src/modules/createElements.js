@@ -120,11 +120,14 @@ export function createTaskInDomv2(task) {
                     const editedTask = newTask();
                     const taskList = document.querySelector('.task-list');
                     let index = tasks.indexOf(task);
-                    
+                    const children = taskList.children;
+                    const child = taskList.children[index];
+                    const nextChild = taskList.children[index + 1];
         
                     tasks.splice(index, 1, editedTask);
-                    taskLi.remove();
-                    taskList.append(createTaskInDomv2(editedTask));
+                    taskList.removeChild(child);
+                    taskList.insertBefore(createTaskInDomv2(editedTask), nextChild);
+
                     
                     task.title = editedTask.title;
                     task.dueDate = editedTask.dueDate;
@@ -143,47 +146,6 @@ export function createTaskInDomv2(task) {
             return;
         }
     })
-    // editButton.addEventListener('click', function(e){
-    //     if (e.target !== this){
-    //         //delete old task and replace with new one, use index of task
-    //         function edit() {
-    //             editTask();
-    //             const form = document.querySelector('#form');
-                
-    //             form.querySelector('#title').value = task.title;
-    //             form.querySelector('#description').value = task.description;
-    //             form.querySelector('#date').value = task.dueDate;
-    //             form.querySelector('#priority').value = task.priority;
-                
-    //             form.addEventListener('submit', function(e) {
-    //                 const editedTask = newTask();
-                    
-    //                 title.textContent = editedTask.title;
-    //                 date.textContent = editedTask.dueDate;
-    //                 priority = editedTask.priority;
-    //                 priorityClass = getPriority(priority);
-    //                 prioDiv.removeAttribute("class");
-    //                 prioDiv.classList.add(priorityClass, 'task-prio-div');
-    //                 taskProject.textContent = `Project: ${editedTask.project}`
-    //                 taskDetails.textContent = `Description: ${editedTask.description}`;
-                    
-    //                 task.title = editedTask.title;
-    //                 task.dueDate = editedTask.dueDate;
-    //                 task.priority = editedTask.priority;
-    //                 task.project = editedTask.project;
-    //                 task.description = editedTask.description;
-                    
-    //                 getTasks();
-    //                 e.preventDefault();
-    //                 cancelForm();
-    //             })
-    //             return;
-    //         }
-    //         edit();
-    //         e.stopPropagation();
-    //         return;
-    //     }
-    // })
 
     return taskLi;
 }
