@@ -63,50 +63,14 @@ export function initForm() {
     return form;
 }
 
-const form = elFactory('div', {class: 'form-div'}, 
-    elFactory('form', {class: 'form', id: 'form'}, 
-        elFactory('div', {class: 'close-div'}, 'X'),
-        elFactory('div', {class: 'input-div form-header-div'}, 
-            elFactory('h2', {class: 'form-header'}, 'Add Task')
-        ),
-        elFactory('div', {class: 'input-div title-div'}, 
-            elFactory('label', {for: 'title'}, 'Title'),
-            elFactory('input', {class: 'form-input form-title', id:'title',
-            name:'title', required:'true'})
-        ),
-        elFactory('div', {class: 'input-div description-div'}, 
-            elFactory('label', {for: 'description'}, 'Description'),
-            elFactory('textarea', {class: 'form-input form-description', id:'description',
-            name:'description', required:'true'})
-        ),
-        elFactory('div', {class: 'input-div date-div'},
-            elFactory('label', {for: 'date'}, 'Due Date'),
-            elFactory('input', {type: 'date', class: 'form-input form-date', 
-            id:'date', name:'due-date', required:'true'})
-        ),
-        elFactory('div', {class: 'input-div priority-div'},
-            elFactory('label', {for: 'priority'}, 'Priority'),
-            elFactory('select', {class: 'form-input form-priority', 
-            id:'priority', name:'priority', required:'true'}, 
-                elFactory('option', {value:''}, 'Select Priority'),
-                elFactory('option', {value:'low'}, 'Low'),
-                elFactory('option', {value:'mid'}, 'Mid'),
-                elFactory('option', {value:'high'}, 'High')
-            )
-        ),
-        elFactory('div', {class: 'input-div'}, 
-            elFactory('button', {class: 'form-button', form:'form'}, 'Add')
-        )
-    )
-);
-
-
-/*Super long function, i know. 
-This creates the task in the dom, using the values of the new task
-created from the constructor*/
-
 //Pass in task as argument, gives values to pass into dom.
 export function createTaskInDomv2(task) {
+    const editButton = elFactory('button', {class:'task-edit-button'}, 
+    elFactory('i', {class:'fa fa-edit'}));
+
+    const deleteButton = elFactory('button', {class:'task-delete-button'}, 
+    elFactory('i', {class:'fa fa-trash'}));
+
     const taskLi = elFactory('li', {class:'task', id:`${task.title}`},
         //Task View 
         elFactory('div', {class:'task-view-div'}, 
@@ -119,12 +83,14 @@ export function createTaskInDomv2(task) {
                 elFactory('p', {class:'task-date'}, `${task.dueDate}`)
             ),
             elFactory('div', {class:'task-actions-div'}, 
-                elFactory('button', {class:'task-edit-button'}, 
-                    elFactory('i', {class:'fa fa-edit'})
-                ),
-                elFactory('button', {class:'task-delete-button'}, 
-                    elFactory('i', {class:'fa fa-trash'})
-                )
+                // elFactory('button', {class:'task-edit-button'}, 
+                //     elFactory('i', {class:'fa fa-edit'})
+                // ),
+                editButton,
+                // elFactory('button', {class:'task-delete-button'}, 
+                //     elFactory('i', {class:'fa fa-trash'})
+                // )
+                deleteButton
             )
         ),
         //Task Details
@@ -134,9 +100,18 @@ export function createTaskInDomv2(task) {
         )
     );
 
+    deleteButton.addEventListener('click', function(e){
+        if (e.target !== this){
+            taskLi.remove();
+            let index = tasks.indexOf(task);
+            tasks.splice(index, 1);
+            e.stopPropagation();
+            return;
+        }
+    })
+
     return taskLi;
 }
-
 
 // export function createTaskInDom(task) {
 //     const taskContainer = document.createElement('li');

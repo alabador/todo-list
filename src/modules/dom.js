@@ -16,12 +16,8 @@ export function cancelForm() {
 export function addTaskToDom() {
     const taskList = document.querySelector('.task-list');
     const task = newTask();
-    // const currentTask = createTaskInDom(task);
     const currentTask = createTaskInDomv2(task);
     tasks.push(task);
     taskList.append(currentTask);
-    //add logic to check what project the task is in and add to 
-    //corresponding array
-    
     cancelForm();
 };
