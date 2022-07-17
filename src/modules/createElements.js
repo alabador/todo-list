@@ -1,8 +1,8 @@
 import { editTaskInDom, openForm, cancelForm} from "./dom";
 import { editValuesEvent } from "./events";
-import { newTask, getPriority, editTask, tasks } from "./taskActions";
+import { newTask, getPriority, editTask } from "./taskActions";
 import { getTasks } from "./pageload";
-import { el } from "date-fns/locale";
+import { currentProject } from "./projects";
 
 const elFactory = (type, attributes, ...children) => {
     const el = document.createElement(type);
@@ -94,11 +94,19 @@ export function createTaskInDomv2(task) {
         )
     );
 
+    checkbox.addEventListener('click', function(e){
+        if (e.target == this){
+            console.log('stopped');
+            e.stopPropagation();
+            return;
+        }
+    })
+
     deleteButton.addEventListener('click', function(e){
         if (e.target !== this){
             taskLi.remove();
-            let index = tasks.indexOf(task);
-            tasks.splice(index, 1);
+            let index = currentProject.indexOf(task);
+            currentProject.splice(index, 1);
             e.stopPropagation();
             return;
         }
@@ -119,12 +127,12 @@ export function createTaskInDomv2(task) {
                 form.addEventListener('submit', function(e) {
                     const editedTask = newTask();
                     const taskList = document.querySelector('.task-list');
-                    let index = tasks.indexOf(task);
+                    let index = currentProject.indexOf(task);
                     const children = taskList.children;
                     const child = taskList.children[index];
                     const nextChild = taskList.children[index + 1];
         
-                    tasks.splice(index, 1, editedTask);
+                    currentProject.splice(index, 1, editedTask);
                     taskList.removeChild(child);
                     taskList.insertBefore(createTaskInDomv2(editedTask), nextChild);
 

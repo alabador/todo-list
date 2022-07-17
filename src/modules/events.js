@@ -2,7 +2,7 @@ import { createTask, newTask } from "./taskActions";
 import { addTaskToDom, cancelForm, editTaskInDom } from "./dom";
 import { createTaskInDom } from "./createElements";
 import { getTasks } from "./pageload";
-import { tasks } from "./taskActions";
+import { currentProject } from "./projects";
 
 function initCreateTaskEvent() {
     const createButton = document.querySelector('.add');

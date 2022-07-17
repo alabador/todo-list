@@ -3,8 +3,6 @@ import { openForm } from "./dom";
 import { cancelTaskCreateEvent, saveValuesEvent, editValuesEvent } from "./events";
 import { getTasks } from "./pageload";
 
-export let tasks = [];
-
 export function createTask() {
     openForm();
     cancelTaskCreateEvent();
@@ -47,14 +45,6 @@ export function getPriority(priority) {
     else {
         return;
     }
-}
-
-export function matchTask() {
-
-}
-
-export function deleteTask() {
-    
 }
 
 function editTaskProperties() {
