@@ -12,10 +12,6 @@ export function setProject(project) {
     currentProject =  projects[project];
 };
 
-function selectProject() {
-    //logic to choose project, prob called by clicking on tab in nav
-};
-
 export function chooseFromProjects() {
     const projectList = Object.keys(projects);
     return projectList;

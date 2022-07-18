@@ -15,6 +15,11 @@ export function cancelForm() {
     document.querySelector('.add').disabled = false;
 };
 
+export function cancelProjectForm() {
+    const form = document.querySelector('#project-add-form');
+    form.parentElement.removeChild(form);
+}
+
 export function addTaskToDom() {
     const taskList = document.querySelector('.task-list');
     const task = newTask();

@@ -1,6 +1,6 @@
 import { createTask, newTask } from "./taskActions";
 import { addTaskToDom, cancelForm, editTaskInDom } from "./dom";
-import { createProjectInDom, createTaskInDom } from "./createElements";
+import { addProjectToProjects, createProjectFormInDom, createTaskInDom } from "./createElements";
 import { getTasks } from "./pageload";
 import { currentProject } from "./projects";
 
@@ -29,7 +29,8 @@ function addProjectEvent() {
     addProject.addEventListener('click', function(){
         //create input/form to create a button for project
         const projectsList = document.querySelector('.projects-list');
-        projectsList.prepend(createProjectInDom());
+        projectsList.prepend(createProjectFormInDom());
+        addProjectToProjects();
     });
 }
 
