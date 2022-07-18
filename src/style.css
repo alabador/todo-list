@@ -75,6 +75,9 @@ main {
   padding: 12px 12px;
   cursor: pointer;
   border-radius: 4px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 .nav-button:hover {
@@ -93,6 +96,10 @@ main {
   display: flex;
   justify-content: space-around;
   margin: 16px 0px;
+}
+
+.projects-list .fa {
+  font-size: 12px;
 }
 
 .task-window {

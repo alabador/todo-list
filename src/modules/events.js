@@ -31,6 +31,7 @@ function addProjectEvent() {
         const projectsList = document.querySelector('.projects-list');
         projectsList.prepend(createProjectFormInDom());
         addProjectToProjects();
+        // projectsList.prepend(createProjectInDom());
     });
 }
 

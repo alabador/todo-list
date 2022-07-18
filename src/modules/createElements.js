@@ -80,7 +80,7 @@ export function addProjectOptions() {
 
 export function createProjectFormInDom() {
     const input = elFactory('input', {class: 'project-add-form-input', form:'project-add-form', 
-    placeholder: 'Enter Project Name', id:'project-add-form-input'});
+    placeholder: 'Enter Project Name', id:'project-add-form-input', required:'true'});
     const form = elFactory('form', {class: 'project-add-form', id: 'project-add-form'}, 
         input,
         elFactory('div', {class: 'project-add-form-ctas'}, 
@@ -95,13 +95,28 @@ export function createProjectFormInDom() {
 export function addProjectToProjects() {
     const form = document.querySelector('#project-add-form');
     const input = form.querySelector('#project-add-form-input');
+    const projectsList = document.querySelector('.projects-list');
     form.addEventListener('submit', function(e){
         e.preventDefault();
         addProject(input.value);
+        const project = elFactory('button', {class: 'nav-button'}, 
+            elFactory('i', {class: 'fa fa-list'}),
+            input.value
+        )
+        projectsList.prepend(project);
         displayProjects();
         cancelProjectForm();
     })
 }
+
+// export function createProjectInDom() {
+//     const project = elFactory('button', {class: '.nav-button'}, 
+//         elFactory('i', {class: '.fa fa-list'}),
+//         input.value
+//     )
+//     console.log(input.value);
+//     return project;
+// }
 
 //Pass in task as argument, gives values to pass into dom.
 export function createTaskInDomv2(task) {
