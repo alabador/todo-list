@@ -1,8 +1,7 @@
-import { editTaskInDom, openForm, cancelForm} from "./dom";
-import { editValuesEvent } from "./events";
+import { openForm, cancelForm} from "./dom";
 import { newTask, getPriority, editTask } from "./taskActions";
 import { getTasks } from "./pageload";
-import { currentProject } from "./projects";
+import { currentProject, projects } from "./projects";
 
 const elFactory = (type, attributes, ...children) => {
     const el = document.createElement(type);
@@ -55,11 +54,39 @@ export function initForm() {
                     elFactory('option', {value:'high'}, 'High')
                 )
             ),
+            elFactory('div', {class: 'input-div project-div'},
+                elFactory('label', {for: 'project'}, 'Project'),
+                elFactory('select', {class: 'form-input form-project', 
+                id:'project', name:'project', required:'true'},
+                    elFactory('option', {value:''}, 'Select a Project')
+                )
+            ),
             elFactory('div', {class: 'input-div'}, 
                 elFactory('button', {class: 'form-button', form:'form'}, 'Add')
             )
         )
     );
+    return form;
+}
+
+export function addProjectOptions() {
+    const form = document.querySelector('#form');
+    const projectSelect = form.querySelector('#project');
+    const projectList = Object.keys(projects);
+    for (let i=0; i<projectList.length; i++){
+        projectSelect.options[projectSelect.options.length] = new Option('Inbox', projectList[i]);
+    }
+};
+
+export function createProjectInDom() {
+    const form = elFactory('form', {class: 'project-add-form', id: 'project-add-form'}, 
+        elFactory('input', {class: 'project-add-form-input', form:'project-add-form', 
+        placeholder: 'Enter Project Name'}),
+        elFactory('div', {class: 'project-add-form-ctas'}, 
+            elFactory('button', {class: 'form-button form-add', form:'project-add-form'}, 'Add'),
+            elFactory('button', {class: 'form-button form-cancel', form:'project-add-form'}, 'Cancel')
+        )
+    )
     return form;
 }
 

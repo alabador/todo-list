@@ -1,10 +1,11 @@
-import { createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
+import { addProjectOptions, createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
 import { newTask } from "./taskActions";
 import { currentProject } from "./projects";
 
 export function openForm() {
     const body = document.querySelector('body');
     body.append(initForm());
+    addProjectOptions();
     document.querySelector('.add').disabled = true;
 };
 

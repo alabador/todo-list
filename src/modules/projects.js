@@ -16,6 +16,11 @@ function selectProject() {
     //logic to choose project, prob called by clicking on tab in nav
 };
 
+export function chooseFromProjects() {
+    const projectList = Object.keys(projects);
+    return projectList;
+}
+
 export function addProject(project) {
     //adds project to project object
     const projectList = Object.keys(projects);

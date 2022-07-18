@@ -1,6 +1,6 @@
 import { createTask, newTask } from "./taskActions";
 import { addTaskToDom, cancelForm, editTaskInDom } from "./dom";
-import { createTaskInDom } from "./createElements";
+import { createProjectInDom, createTaskInDom } from "./createElements";
 import { getTasks } from "./pageload";
 import { currentProject } from "./projects";
 
@@ -24,5 +24,13 @@ function saveValuesEvent() {
     });
 };
 
+function addProjectEvent() {
+    const addProject = document.querySelector('.add-project');
+    addProject.addEventListener('click', function(){
+        //create input/form to create a button for project
+        const projectsList = document.querySelector('.projects-list');
+        projectsList.prepend(createProjectInDom());
+    });
+}
 
-export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent};
+export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent, addProjectEvent};

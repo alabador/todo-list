@@ -9,6 +9,7 @@
 
     --task-details: rgb(223, 251, 244);
     --hover-color: rgb(140, 212, 230);
+    --nav-hover: rgb(219, 219, 219);
 }
 
 
@@ -52,6 +53,46 @@ main {
 .nav {
     background-color: var(--nav-bg);
     overflow: hidden;
+    padding: 0 20px;
+}
+
+.nav h2 {
+  margin: 12px 0;
+  padding: 8px 0;
+  border-bottom: 2px solid gray;
+}
+
+.nav section {
+  margin-top: 24px;
+}
+
+.nav-button {
+  border: none;
+  width: 100%;
+  background: none;
+  text-align: left;
+  font-size: 16px;
+  padding: 12px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nav-button:hover {
+  background-color: var(--nav-hover);
+}
+
+.nav-button:active {
+  background-color: var(--hover-color);
+}
+
+.project-add-form-input{
+  width: 100%;
+}
+
+.project-add-form-ctas {
+  display: flex;
+  justify-content: space-around;
+  margin: 16px 0px;
 }
 
 .task-window {
@@ -92,17 +133,7 @@ main {
     transform: scale(1.05);
  }
 
- /* .form-div {
-    position: fixed;
-    width: 400px;
-    padding: 25px;
-    z-index: 1;
-    background-color: #ffffff;
-    box-shadow: 1px 3px 8px 3px rgba(189, 189, 189, 0.795);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
- } */
+
  .form-div {
     position: absolute;
     display: flex;
@@ -139,12 +170,6 @@ main {
     box-shadow: 1px 3px 8px 3px rgba(189, 189, 189, 0.795);
     border-radius: 4px;
  }
- /* .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
- } */
 
  .close-div {
     position:absolute;
@@ -182,6 +207,21 @@ main {
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
+ }
+
+ .form-add,.form-cancel {
+  font-size: 12px;
+  min-width: 75px;
+  padding: 8px 12px;
+ }
+
+ .form-add{
+  background-color:rgb(25, 202, 25);
+  color:white;
+ }
+ .form-cancel{
+  background-color:rgb(218, 55, 27);
+  color: white;
  }
 
  .task-list {
