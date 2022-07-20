@@ -47,9 +47,4 @@ export function getPriority(priority) {
     else {
         return;
     }
-}
-
-function editTaskProperties() {
-    /*Task formation - fill out fields to get task properties*/
-    
 };

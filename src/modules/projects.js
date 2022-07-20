@@ -37,9 +37,3 @@ export function displayProjects() {
 export function displayCurrentProject() {
     console.log(currentProject);
 }
-
-//a new project is created (projects)
-// this project is added to object (projects)
-// ex: projects.work = []
-
-//for this, create a function that adds a property to object

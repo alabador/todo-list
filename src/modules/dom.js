@@ -28,3 +28,14 @@ export function addTaskToDom() {
     taskList.append(currentTask);
     cancelForm();
 };
+
+export function switchProjectView() {
+    const taskList = document.querySelector('.task-list');
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+    for(let i=0; i<currentProject.length; i++){
+        const currentTaskDom = createTaskInDomv2(currentProject[i]);
+        taskList.append(currentTaskDom);
+    }
+}

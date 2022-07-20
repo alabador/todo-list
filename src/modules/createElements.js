@@ -101,22 +101,14 @@ export function addProjectToProjects() {
         addProject(input.value);
         const project = elFactory('button', {class: 'nav-button project'}, 
             elFactory('i', {class: 'fa fa-list'}),
-            input.value
+            input.value,
+            elFactory('i', {class:'fa fa-trash'})
         )
         projectsList.prepend(project);
         displayProjects();
         cancelProjectForm();
     })
 }
-
-// export function createProjectInDom() {
-//     const project = elFactory('button', {class: '.nav-button'}, 
-//         elFactory('i', {class: '.fa fa-list'}),
-//         input.value
-//     )
-//     console.log(input.value);
-//     return project;
-// }
 
 //Pass in task as argument, gives values to pass into dom.
 export function createTaskInDomv2(task) {
@@ -195,7 +187,6 @@ export function createTaskInDomv2(task) {
                     task.title = editedTask.title;
                     task.dueDate = editedTask.dueDate;
                     task.priority = editedTask.priority;
-                    // task.project = editedTask.project;
                     task.description = editedTask.description;
                     
                     getTasks();
