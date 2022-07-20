@@ -54,13 +54,13 @@ export function initForm() {
                     elFactory('option', {value:'high'}, 'High')
                 )
             ),
-            elFactory('div', {class: 'input-div project-div'},
-                elFactory('label', {for: 'project'}, 'Project'),
-                elFactory('select', {class: 'form-input form-project', 
-                id:'project', name:'project', required:'true'},
-                    elFactory('option', {value:''}, 'Select a Project')
-                )
-            ),
+            // elFactory('div', {class: 'input-div project-div'},
+            //     elFactory('label', {for: 'project'}, 'Project'),
+            //     elFactory('select', {class: 'form-input form-project', 
+            //     id:'project', name:'project', required:'true'},
+            //         elFactory('option', {value:''}, 'Select a Project')
+            //     )
+            // ),
             elFactory('div', {class: 'input-div'}, 
                 elFactory('button', {class: 'form-button', form:'form'}, 'Add')
             )
@@ -69,14 +69,14 @@ export function initForm() {
     return form;
 }
 
-export function addProjectOptions() {
-    const form = document.querySelector('#form');
-    const projectSelect = form.querySelector('#project');
-    const projectList = Object.keys(projects);
-    for (let i=0; i<projectList.length; i++){
-        projectSelect.options[projectSelect.options.length] = new Option(projectList[i], projectList[i]);
-    }
-};
+// export function addProjectOptions() {
+//     const form = document.querySelector('#form');
+//     const projectSelect = form.querySelector('#project');
+//     const projectList = Object.keys(projects);
+//     for (let i=0; i<projectList.length; i++){
+//         projectSelect.options[projectSelect.options.length] = new Option(projectList[i], projectList[i]);
+//     }
+// };
 
 export function createProjectFormInDom() {
     const input = elFactory('input', {class: 'project-add-form-input', form:'project-add-form', 
@@ -99,7 +99,7 @@ export function addProjectToProjects() {
     form.addEventListener('submit', function(e){
         e.preventDefault();
         addProject(input.value);
-        const project = elFactory('button', {class: 'nav-button'}, 
+        const project = elFactory('button', {class: 'nav-button project'}, 
             elFactory('i', {class: 'fa fa-list'}),
             input.value
         )
@@ -195,7 +195,7 @@ export function createTaskInDomv2(task) {
                     task.title = editedTask.title;
                     task.dueDate = editedTask.dueDate;
                     task.priority = editedTask.priority;
-                    task.project = editedTask.project;
+                    // task.project = editedTask.project;
                     task.description = editedTask.description;
                     
                     getTasks();

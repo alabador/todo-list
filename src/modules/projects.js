@@ -1,3 +1,4 @@
+import { cancelProjectForm } from "./dom";
 
 
 export const projects = {
@@ -5,6 +6,7 @@ export const projects = {
 };
 
 export let currentProject = [];
+export let currentProjectName = 'all';
 
 export function setProject(project) {
     //select project to assign to current project
@@ -23,11 +25,17 @@ export function addProject(project) {
     if (!projectList.includes(project)){
         projects[project] = [];
     }
-    else {alert("Choose a different name, project names must be unique.")}
+    else {
+        alert("Choose a different name, project names must be unique.");
+    }
 };
 
 export function displayProjects() {
     console.log(projects);
+}
+
+export function displayCurrentProject() {
+    console.log(currentProject);
 }
 
 //a new project is created (projects)

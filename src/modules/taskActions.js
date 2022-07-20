@@ -2,6 +2,7 @@ import { Task } from "./task";
 import { openForm } from "./dom";
 import { cancelTaskCreateEvent, saveValuesEvent, editValuesEvent } from "./events";
 import { getTasks } from "./pageload";
+import { currentProject, currentProjectName } from "./projects";
 
 export function createTask() {
     openForm();
@@ -19,6 +20,7 @@ export function editTask() {
 export function newTask() {
     const propertiesArray = getValues();
     const task = new Task(...propertiesArray);
+    task.project = currentProjectName;
     return task;
 };
 

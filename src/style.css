@@ -102,6 +102,10 @@ main {
   font-size: 12px;
 }
 
+.project-highlight {
+  background-color: lightblue;
+}
+
 .task-window {
     background-color: white;
 }
