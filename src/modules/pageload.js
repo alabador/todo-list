@@ -1,4 +1,4 @@
-import { addProjectEvent, initCreateTaskEvent, selectCurrentProjectEvent, } from "./events";
+import { addProjectEvent, deleteProject, initCreateTaskEvent, selectCurrentProjectEvent, } from "./events";
 import { currentProject, projects, setProject } from "./projects";
 
 export function initialPageLoad() {
@@ -6,6 +6,7 @@ export function initialPageLoad() {
     setProject('all');
     addProjectEvent();
     selectCurrentProjectEvent();
+    deleteProject();
 };
 
 export function displayTaskList() {

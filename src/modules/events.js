@@ -48,8 +48,8 @@ function selectCurrentProjectEvent() {
         if(e.target === inbox){
             e.stopPropagation();
             setProject('all');
-            displayCurrentProject();
-            displayProjects();
+            // displayCurrentProject();
+            // displayProjects();
             currentProjectName = 'all';
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.add('project-highlight');
@@ -60,8 +60,8 @@ function selectCurrentProjectEvent() {
             e.stopPropagation();
             const projectText = e.target.textContent;
             setProject(projectText);
-            displayCurrentProject();
-            displayProjects();
+            // displayCurrentProject();
+            // displayProjects();
             currentProjectName = projectText;
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.toggle('project-highlight');
@@ -69,5 +69,18 @@ function selectCurrentProjectEvent() {
         };
     })
 };
+
+export function deleteProject() {
+    const projectList = document.querySelector('.projects-list');
+    projectList.addEventListener('click', function(e) {
+        if(e.target.classList.contains('fa-trash')) {
+            e.stopPropagation();
+            const projectName = e.target.parentNode.textContent;
+            delete projects[projectName];
+            e.target.parentNode.remove();
+            displayProjects();
+        }
+    })
+}
 
 export {initCreateTaskEvent, cancelTaskCreateEvent, saveValuesEvent, addProjectEvent, selectCurrentProjectEvent};
