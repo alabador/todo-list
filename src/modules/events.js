@@ -1,5 +1,5 @@
 import { createTask, newTask } from "./taskActions";
-import { addTaskToDom, cancelForm, editTaskInDom, switchProjectView } from "./dom";
+import { addTaskToDom, cancelForm, defaultView, editTaskInDom, switchProjectView } from "./dom";
 import { addProjectToProjects, createProjectFormInDom, createTaskInDom } from "./createElements";
 import { getTasks } from "./pageload";
 import { currentProject, currentProjectName, displayCurrentProject, displayProjects, projects, setProject } from "./projects";
@@ -72,13 +72,22 @@ function selectCurrentProjectEvent() {
 
 export function deleteProject() {
     const projectList = document.querySelector('.projects-list');
+
     projectList.addEventListener('click', function(e) {
         if(e.target.classList.contains('fa-trash')) {
             e.stopPropagation();
+
             const projectName = e.target.parentNode.textContent;
+
             delete projects[projectName];
             e.target.parentNode.remove();
             displayProjects();
+
+            const inbox = document.querySelector('.inbox');
+            inbox.classList.add('project-highlight');
+            defaultView();
+
+            //Add logic to switch view of task list to another project/inbox
         }
     })
 }

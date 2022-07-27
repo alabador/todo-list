@@ -1,6 +1,6 @@
 import { addProjectOptions, createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
 import { newTask } from "./taskActions";
-import { currentProject } from "./projects";
+import { currentProject, setProject } from "./projects";
 
 export function openForm() {
     const body = document.querySelector('body');
@@ -35,6 +35,19 @@ export function switchProjectView() {
         taskList.removeChild(taskList.firstChild);
     }
     for(let i=0; i<currentProject.length; i++){
+        const currentTaskDom = createTaskInDomv2(currentProject[i]);
+        taskList.append(currentTaskDom);
+    }
+}
+
+/*Resets to inbox project*/
+export function defaultView() {
+    const taskList = document.querySelector('.task-list');
+    while (taskList.firstChild) {
+        taskList.removeChild(taskList.firstChild);
+    }
+    for(let i=0; i<currentProject.length; i++){
+        setProject('all');
         const currentTaskDom = createTaskInDomv2(currentProject[i]);
         taskList.append(currentTaskDom);
     }
