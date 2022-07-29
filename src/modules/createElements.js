@@ -105,7 +105,7 @@ export function addProjectToProjects() {
             elFactory('i', {class:'fa fa-trash'})
         )
         projectsList.prepend(project);
-        displayProjects();
+        // displayProjects();
         cancelProjectForm();
     })
 }

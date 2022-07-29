@@ -1,3 +1,4 @@
+import { defaultView } from "./dom";
 import { addProjectEvent, deleteProject, initCreateTaskEvent, selectCurrentProjectEvent, } from "./events";
 import { currentProject, projects, setProject } from "./projects";
 
@@ -7,6 +8,7 @@ export function initialPageLoad() {
     addProjectEvent();
     selectCurrentProjectEvent();
     deleteProject();
+    defaultView();
 };
 
 export function displayTaskList() {

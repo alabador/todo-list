@@ -4,6 +4,7 @@ import { addProjectToProjects, createProjectFormInDom, createTaskInDom } from ".
 import { getTasks } from "./pageload";
 import { currentProject, currentProjectName, displayCurrentProject, displayProjects, projects, setProject } from "./projects";
 import { forEach } from "lodash";
+import { saveProjectToLocalStorage, saveToLocalStorage } from "./localStorage";
 
 function initCreateTaskEvent() {
     const createButton = document.querySelector('.add');
@@ -47,9 +48,8 @@ function selectCurrentProjectEvent() {
 
         if(e.target === inbox){
             e.stopPropagation();
+            saveProjectToLocalStorage();
             setProject('all');
-            // displayCurrentProject();
-            // displayProjects();
             currentProjectName = 'all';
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.add('project-highlight');
@@ -58,10 +58,9 @@ function selectCurrentProjectEvent() {
 
         if(e.target !== addProject && e.target.classList.contains('project') && e.target !== inbox){
             e.stopPropagation();
+            saveProjectToLocalStorage();
             const projectText = e.target.textContent;
             setProject(projectText);
-            // displayCurrentProject();
-            // displayProjects();
             currentProjectName = projectText;
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.toggle('project-highlight');
@@ -81,7 +80,7 @@ export function deleteProject() {
 
             delete projects[projectName];
             e.target.parentNode.remove();
-            displayProjects();
+            // displayProjects();
 
             const inbox = document.querySelector('.inbox');
             inbox.classList.add('project-highlight');
