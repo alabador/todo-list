@@ -1,5 +1,6 @@
 import { defaultView } from "./dom";
 import { addProjectEvent, deleteProject, initCreateTaskEvent, selectCurrentProjectEvent, } from "./events";
+import { getProjectListFromLocalStorage } from "./localStorage";
 import { currentProject, projects, setProject } from "./projects";
 
 export function initialPageLoad() {
@@ -8,6 +9,7 @@ export function initialPageLoad() {
     addProjectEvent();
     selectCurrentProjectEvent();
     deleteProject();
+    getProjectListFromLocalStorage();
     defaultView();
 };
 

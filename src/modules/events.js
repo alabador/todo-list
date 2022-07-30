@@ -54,6 +54,7 @@ function selectCurrentProjectEvent() {
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.add('project-highlight');
             switchProjectView();
+            saveProjectListToLocalStorage();
         };
 
         if(e.target !== addProject && e.target.classList.contains('project') && e.target !== inbox){
@@ -65,6 +66,7 @@ function selectCurrentProjectEvent() {
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.toggle('project-highlight');
             switchProjectView();
+            saveProjectListToLocalStorage();
         };
     })
 };

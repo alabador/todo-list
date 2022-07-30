@@ -1,7 +1,7 @@
 import { addProjectOptions, createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
 import { newTask } from "./taskActions";
 import { currentProject, currentProjectName, setProject } from "./projects";
-import { getFromLocalStorage, getTaskFromLocalStorage, saveTaskToLocalStorage } from "./localStorage";
+import { getFromLocalStorage, getTaskFromLocalStorage, saveProjectListToLocalStorage, saveProjectToLocalStorage, saveTaskToLocalStorage } from "./localStorage";
 
 export function openForm() {
     const body = document.querySelector('body');
@@ -26,14 +26,17 @@ export function addTaskToDom() {
     const task = newTask();
 
     //save task in local storage
-    saveTaskToLocalStorage(task);
+    // saveTaskToLocalStorage(task);
     //call task from local storage and use as argument
-    const savedTask = getTaskFromLocalStorage(task);
+    // const savedTask = getTaskFromLocalStorage(task);
 
-    // const currentTask = createTaskInDomv2(task);
-    const currentTask = createTaskInDomv2(savedTask);
+    const currentTask = createTaskInDomv2(task);
+    // const currentTask = createTaskInDomv2(savedTask);
+    
     /*Task object added to project array*/
     currentProject.push(task);
+    saveProjectToLocalStorage();
+    saveProjectListToLocalStorage();
 
     taskList.append(currentTask);
     cancelForm();
@@ -41,7 +44,10 @@ export function addTaskToDom() {
 
 export function switchProjectView() {
     const taskList = document.querySelector('.task-list');
-    const savedTasks = getFromLocalStorage();
+    let savedTasks = getFromLocalStorage();
+    if (savedTasks === null) {
+        savedTasks = [];
+    }
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
@@ -56,7 +62,12 @@ export function switchProjectView() {
 /*Resets to inbox project*/
 export function defaultView() {
     const taskList = document.querySelector('.task-list');
-    const savedTasks = getFromLocalStorage();
+
+    let savedTasks = getFromLocalStorage();
+    if (savedTasks === null) {
+        savedTasks = [];
+    }
+
     while (taskList.firstChild) {
         taskList.removeChild(taskList.firstChild);
     }
