@@ -1,7 +1,7 @@
-import { addProjectOptions, createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
+import { addProjectOptions, createProjectList, createTaskInDom, createTaskInDomv2, initForm } from "./createElements";
 import { newTask } from "./taskActions";
 import { currentProject, currentProjectName, setProject } from "./projects";
-import { getFromLocalStorage, getTaskFromLocalStorage, saveProjectListToLocalStorage, saveProjectToLocalStorage, saveTaskToLocalStorage } from "./localStorage";
+import { getFromLocalStorage, getProjectListFromLocalStorage, getTaskFromLocalStorage, saveProjectListToLocalStorage, saveProjectToLocalStorage, saveTaskToLocalStorage } from "./localStorage";
 
 export function openForm() {
     const body = document.querySelector('body');
@@ -36,11 +36,44 @@ export function addTaskToDom() {
     /*Task object added to project array*/
     currentProject.push(task);
     saveProjectToLocalStorage();
-    saveProjectListToLocalStorage();
 
     taskList.append(currentTask);
     cancelForm();
 };
+
+export function saveProjectsList() {
+    //gets projects in nav and saves to local storage
+    const projectList = document.querySelector('.projects-list');
+    const projects = projectList.querySelectorAll('.project');
+    let projectsArray = getProjectListFromLocalStorage();
+    
+    if(projectsArray === null) {
+        projectsArray = [];
+    }
+    
+    //save textcontent of buttons in localstorage
+    for (let i=0; i < projects.length; i++){
+        const project = projects[i].textContent;
+        if(!projectsArray.includes(project)) {
+            projectsArray.push(project);
+        }
+        // saveProjectListToLocalStorage(project);
+    }
+    if(!projectsArray.includes('all')) {
+        projectsArray.push('all');
+    }
+    saveProjectListToLocalStorage(projectsArray);
+}
+
+//grabs from local storage, appends to projectlist in nav
+export function loadProjectsList() {
+    const projectList = document.querySelector('.projects-list');
+    const savedProjects = getProjectListFromLocalStorage(); //is null
+    
+    // for (let i=0; i<savedProjects.length; i++){
+    //     projectList.prepend(createProjectList(savedProjects[i]));
+    // }
+}
 
 export function switchProjectView() {
     const taskList = document.querySelector('.task-list');

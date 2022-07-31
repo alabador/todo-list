@@ -1,5 +1,5 @@
 import { createTask, newTask } from "./taskActions";
-import { addTaskToDom, cancelForm, defaultView, editTaskInDom, switchProjectView } from "./dom";
+import { addTaskToDom, cancelForm, defaultView, editTaskInDom, loadProjectsList, saveProjectsList, switchProjectView } from "./dom";
 import { addProjectToProjects, createProjectFormInDom, createTaskInDom } from "./createElements";
 import { getTasks } from "./pageload";
 import { currentProject, currentProjectName, displayCurrentProject, displayProjects, projects, setProject } from "./projects";
@@ -49,24 +49,26 @@ function selectCurrentProjectEvent() {
         if(e.target === inbox){
             e.stopPropagation();
             saveProjectToLocalStorage();
+            saveProjectsList();
             setProject('all');
             currentProjectName = 'all';
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.add('project-highlight');
+            // loadProjectsList();
             switchProjectView();
-            saveProjectListToLocalStorage();
         };
 
         if(e.target !== addProject && e.target.classList.contains('project') && e.target !== inbox){
             e.stopPropagation();
             saveProjectToLocalStorage();
+            saveProjectsList();
             const projectText = e.target.textContent;
             setProject(projectText);
             currentProjectName = projectText;
             projects.forEach(project => project.classList.remove('project-highlight'));
             e.target.classList.toggle('project-highlight');
+            // loadProjectsList();
             switchProjectView();
-            saveProjectListToLocalStorage();
         };
     })
 };

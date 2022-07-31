@@ -1,5 +1,4 @@
 import { cancelProjectForm } from "./dom";
-import { saveProjectListToLocalStorage } from "./localStorage";
 
 
 export const projects = {
@@ -13,7 +12,7 @@ export function setProject(project) {
     //select project to assign to current project
     //puts argument in an object, returns array of object keys
     currentProject =  projects[project];
-    saveProjectListToLocalStorage();
+    
 };
 
 /*Deprecated function since removal of project selection when creating task*/
@@ -27,7 +26,7 @@ export function addProject(project) {
     const projectList = Object.keys(projects);
     if (!projectList.includes(project)){
         projects[project] = [];
-        saveProjectListToLocalStorage();
+        
     }
     else {
         alert("Choose a different name, project names must be unique.");

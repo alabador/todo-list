@@ -208,3 +208,11 @@ export function createTaskInDomv2(task) {
     return taskLi;
 }
 
+export function createProjectList(textContent) {
+    const project = elFactory('button', {class: 'nav-button project'}, 
+            elFactory('i', {class: 'fa fa-list'}),
+            textContent,
+            elFactory('i', {class:'fa fa-trash'})
+    );
+    return project;
+}

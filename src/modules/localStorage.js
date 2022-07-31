@@ -19,8 +19,12 @@ export function getFromLocalStorage() {
 }
 
 /*Purpose of below functions are to saved created projects*/
-export function saveProjectListToLocalStorage() {
-    window.localStorage.setItem('projectList', JSON.stringify(projects));
+
+
+
+export function saveProjectListToLocalStorage(project) {
+    window.localStorage.setItem('projectList', JSON.stringify(project));
+    // window.localStorage.setItem(project, JSON.stringify(project));
 }
 
 export function getProjectListFromLocalStorage() {
