@@ -95,7 +95,7 @@ export function switchProjectView() {
 /*Resets to inbox project*/
 export function defaultView() {
     const taskList = document.querySelector('.task-list');
-
+    setProject('all');
     let savedTasks = getFromLocalStorage();
     if (savedTasks === null) {
         savedTasks = [];
@@ -106,10 +106,8 @@ export function defaultView() {
     }
     // for(let i=0; i<currentProject.length; i++){
     for(let i=0; i<savedTasks.length; i++){
-        setProject('all');
         // const currentTaskDom = createTaskInDomv2(currentProject[i]);
         
-        console.log('huh');
         const currentTaskDom = createTaskInDomv2(savedTasks[i]);
         taskList.append(currentTaskDom);
     }
